@@ -1,0 +1,6 @@
+env_vars:
+  DATABASE_URL: '.postgres[0].credentials.uri'
+  REDIS_URL: '.redis[0].credentials.uri'
+  AWS_ACCESS_KEY_ID: '.["aws-s3-bucket"][0].credentials.aws_access_key_id'
+  AWS_SECRET_ACCESS_KEY: '.["aws-s3-bucket"][0].credentials.aws_secret_access_key'
+  AWS_S3_UPLOAD_BUCKET_NAME: '.["aws-s3-bucket"][0].credentials.bucket_name'

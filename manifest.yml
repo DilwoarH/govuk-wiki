@@ -1,10 +1,17 @@
 ---
   applications:
     - name: govuk-wiki
-      buildpacks: [nodejs_buildpack]
+      buildpacks: 
+        - https://github.com/andy-paine/env-map-buildpack
+        - nodejs_buildpack
       services: [govuk-wiki-s3, govuk-wiki-redis, govuk-wiki-postgres]
       memory: 2G
       routes:
         - route: govuk-wiki.cloudapps.digital
       env:
         URL: govuk-wiki.cloudapps.digital
+        TEAM_LOGO: https://static.civilservicejobs.service.gov.uk/csr/assets/images/opengraph-image.png
+        PGSSLMODE: require
+        AWS_REGION: eu-west-1
+        AWS_S3_UPLOAD_BUCKET_URL: https://s3.amazonaws.com
+        AWS_S3_UPLOAD_MAX_SIZE: 26214400
