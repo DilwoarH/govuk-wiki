@@ -1,0 +1,10 @@
+---
+  applications:
+    - name: govuk-wiki
+      buildpacks: [nodejs_buildpack]
+      services: [govuk-wiki-s3, govuk-wiki-redis, govuk-wiki-postgres]
+      memory: 2G
+      routes:
+        - route: govuk-wiki.cloudapps.digital
+      env:
+        URL: govuk-wiki.cloudapps.digital
