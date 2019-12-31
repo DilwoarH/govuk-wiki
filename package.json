@@ -12,7 +12,7 @@
     "lint": "eslint app server",
     "flow": "flow",
     "deploy": "git push heroku master",
-    "heroku-postbuild": "npm run build && npm run sequelize:migrate",
+    "heroku-postbuild": "npm run sequelize:migrate",
     "sequelize:create-migration": "sequelize migration:create",
     "sequelize:migrate": "sequelize db:migrate",
     "test": "npm run test:app && npm run test:server",
