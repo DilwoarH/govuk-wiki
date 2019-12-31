@@ -2,10 +2,11 @@
   applications:
     - name: govuk-wiki
       buildpacks: 
+        - https://github.com/alphagov/haproxy-buildpack.git
         - https://github.com/andy-paine/env-map-buildpack
         - nodejs_buildpack
       services: [govuk-wiki-s3, govuk-wiki-redis, govuk-wiki-postgres]
-      memory: 2G
+      memory: 3G
       routes:
         - route: govuk-wiki.cloudapps.digital
       env:
@@ -15,3 +16,15 @@
         AWS_REGION: eu-west-1
         AWS_S3_UPLOAD_BUCKET_URL: https://s3.amazonaws.com
         AWS_S3_UPLOAD_MAX_SIZE: 26214400
+      processes:
+        - type: web
+          command: sleep 3600
+          health-check-type: process
+          instances: 1
+          memory: 3G
+      sidecars:
+        - name: haproxy
+          command: ./haproxy -f haproxy.cfg
+          memory: 64M
+          process_types:
+            - web
