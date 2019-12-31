@@ -27,6 +27,20 @@ Outline requires the following dependencies:
 - AWS S3 storage bucket for media and other attachments
 - Slack or Google developer application for authentication
 
+### Cloud foundry deployment (GOVUK PAAS)
+
+These are instructions specifically for deployment of Outline on the GOVUK PAAS platform.
+
+1. Create Postgres service `cf create-service postgres small-9.5 {APP_NAME}-postgres`
+1. Create Regis service `cf create-service redis tiny-3.2 {APP_NAME}-redis`
+1. Create S3 Service `cf create-service aws-s3-bucket default {APP_NAME}-s3`
+1. Update manifest file with correct app details
+1. Generate Google Credentials via https://console.cloud.google.com/apis/credentials
+1. `cf set-env {APP_NAME} SECRET_KEY $(openssl rand -hex 32)`
+1. `cf set-env {APP_NAME} GOOGLE_CLIENT_ID {ID}`
+1. `cf set-env {APP_NAME} GOOGLE_CLIENT_SECRET {SECRET}`
+1. `cf push`
+1. Go to https://{APP_NAME}.cloudapps.digital
 
 ### Development
 
