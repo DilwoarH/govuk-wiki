@@ -24,6 +24,7 @@ applications:
 
     processes:
       - type: web
+        command: sleep 15 && npm run start
         health-check-type: process
         instances: 1
         memory: 2G

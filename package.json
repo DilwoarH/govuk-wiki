@@ -11,7 +11,7 @@
     "dev": "NODE_ENV=development nodemon --watch server index.js",
     "lint": "eslint app server",
     "flow": "flow",
-    "deploy": "git push heroku master",
+    "deploy": "npm run build && cf push",
     "heroku-postbuild": "npm run sequelize:migrate",
     "sequelize:create-migration": "sequelize migration:create",
     "sequelize:migrate": "sequelize db:migrate",
