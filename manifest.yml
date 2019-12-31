@@ -10,9 +10,12 @@ applications:
     routes:
       - route: govuk-wiki.cloudapps.digital
     env:
-      URL: govuk-wiki.cloudapps.digital
+      URL: https://govuk-wiki.cloudapps.digital
+      FORCE_HTTPS: true
+      DEPLOYMENT: self
 
       TEAM_LOGO: https://static.civilservicejobs.service.gov.uk/csr/assets/images/opengraph-image.png
+      WEBSOCKETS_ENABLED: true
 
       PGSSLMODE: require
 
